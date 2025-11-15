@@ -6,6 +6,7 @@
 //
 
 import AVFoundation
+import Photos
 
 class PermissionManager {
     static let shared = PermissionManager()
@@ -22,6 +23,19 @@ class PermissionManager {
     
     var isCameraAuthorized: Bool {
         checkCameraPermission() == .authorized
+    }
+    
+    func checkPhotoLibraryPermission() -> PHAuthorizationStatus {
+        PHPhotoLibrary.authorizationStatus(for: .readWrite)
+    }
+    
+    func requestPhotoLibraryPermission() async -> PHAuthorizationStatus {
+        await PHPhotoLibrary.requestAuthorization(for: .readWrite)
+    }
+    
+    var isPhotoLibraryAuthorized: Bool {
+        let status = checkPhotoLibraryPermission()
+        return status == .authorized || status == .limited
     }
 }
 

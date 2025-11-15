@@ -22,6 +22,16 @@ struct CameraOverlayView: View {
         VStack {
             Spacer()
             
+            blackContainer
+        }
+        .ignoresSafeArea(edges: .bottom)
+    }
+    
+    private var blackContainer: some View {
+        ZStack {
+            Color.black
+                .frame(height: 120)
+            
             HStack(spacing: 0) {
                 cameraModeButton
                 
@@ -34,7 +44,6 @@ struct CameraOverlayView: View {
                 galleryButton
             }
             .padding(.horizontal, 40)
-            .padding(.bottom, 40)
         }
     }
     

@@ -7,11 +7,14 @@
 
 import SwiftUI
 import AVFoundation
+import PhotosUI
 
 struct CameraView: View {
     @StateObject private var viewModel = CameraViewModel()
     @State private var capturedImage: UIImage?
     @State private var shouldNavigateToResults = false
+    @State private var showPhotoPicker = false
+    @State private var photoLibraryPermissionStatus: PHAuthorizationStatus = .notDetermined
     
     let onFoodScanned: (FoodItem) -> Void
     
@@ -50,6 +53,9 @@ struct CameraView: View {
         .navigationTitle("AI Camera")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(false)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .toolbarBackground(Color.black, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
             Task {
                 if viewModel.permissionStatus == .notDetermined {
@@ -73,8 +79,22 @@ struct CameraView: View {
                 }
             }
         }
+        .onChange(of: capturedImage) { oldValue, newValue in
+            if let image = newValue, oldValue == nil, viewModel.capturedImage == nil {
+                viewModel.capturedImage = image
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    shouldNavigateToResults = true
+                }
+            }
+        }
         .onChange(of: shouldNavigateToResults) { oldValue, newValue in
             print("📸 [CameraView] shouldNavigateToResults changed: \(oldValue) -> \(newValue)")
+        }
+        .sheet(isPresented: $showPhotoPicker) {
+            PhotoPicker(selectedImage: $capturedImage)
+        }
+        .onAppear {
+            photoLibraryPermissionStatus = PermissionManager.shared.checkPhotoLibraryPermission()
         }
     }
     
@@ -104,10 +124,33 @@ struct CameraView: View {
                 viewModel.capturePhoto()
             },
             onGalleryTap: {
-                // TODO: Implement gallery picker
+                handleGalleryTap()
             },
             isProcessing: false
         )
+    }
+    
+    private func handleGalleryTap() {
+        Task {
+            let status = PermissionManager.shared.checkPhotoLibraryPermission()
+            
+            if status == .notDetermined {
+                let newStatus = await PermissionManager.shared.requestPhotoLibraryPermission()
+                await MainActor.run {
+                    photoLibraryPermissionStatus = newStatus
+                    if newStatus == .authorized || newStatus == .limited {
+                        showPhotoPicker = true
+                    }
+                }
+            } else if status == .authorized || status == .limited {
+                showPhotoPicker = true
+            } else {
+                // Show permission denied alert
+                await MainActor.run {
+                    // You can add an alert here if needed
+                }
+            }
+        }
     }
     
     

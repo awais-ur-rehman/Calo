@@ -16,26 +16,28 @@ struct ProcessingResultView: View {
     let onRetake: () -> Void
     
     var body: some View {
-        VStack(spacing: 0) {
-            imageSection
+        ZStack {
+            Color.black.ignoresSafeArea()
             
-            ScrollView {
-                VStack(spacing: 24) {
-                    if viewModel.isProcessing {
-                        skeletonLoadingSection
-                    } else if let error = viewModel.error {
-                        errorSection(error)
-                    } else if !viewModel.predictions.isEmpty {
-                        resultsSection
-                    } else {
-                        emptyStateSection
-                    }
+            VStack(spacing: 0) {
+                imageSection
+                
+                if viewModel.isProcessing {
+                    skeletonLoadingSection
+                } else if let error = viewModel.error {
+                    errorSection(error)
+                } else if !viewModel.predictions.isEmpty {
+                    resultsSection
+                } else {
+                    emptyStateSection
                 }
-                .padding()
             }
         }
         .navigationTitle("Results")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarColorScheme(.dark, for: .navigationBar)
+        .toolbarBackground(Color.black, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .task {
             await viewModel.processImage(capturedImage)
         }
@@ -57,54 +59,66 @@ struct ProcessingResultView: View {
     }
     
     private var skeletonLoadingSection: some View {
-        VStack(spacing: 20) {
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle(tint: .black))
-                .scaleEffect(1.5)
-            
-            Text("Analyzing food...")
-                .font(.headline)
-                .foregroundColor(.secondary)
-            
-            VStack(spacing: 16) {
-                SkeletonView()
-                    .frame(height: 60)
-                    .cornerRadius(8)
+        ScrollView {
+            VStack(spacing: 20) {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    .scaleEffect(1.5)
                 
-                SkeletonView()
-                    .frame(height: 120)
-                    .cornerRadius(8)
+                Text("Analyzing food...")
+                    .font(.spaceGrotesk(size: 16, weight: .medium))
+                    .foregroundColor(.white)
                 
-                SkeletonView()
-                    .frame(height: 80)
-                    .cornerRadius(8)
+                VStack(spacing: 16) {
+                    SkeletonView()
+                        .frame(height: 60)
+                        .cornerRadius(8)
+                    
+                    SkeletonView()
+                        .frame(height: 120)
+                        .cornerRadius(8)
+                    
+                    SkeletonView()
+                        .frame(height: 80)
+                        .cornerRadius(8)
+                }
+                .padding(.top, 20)
             }
-            .padding(.top, 20)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 40)
+            .padding()
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 40)
     }
     
     private var resultsSection: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            if let selected = viewModel.selectedPrediction {
-                Text(selected.displayName)
-                    .font(.spaceGrotesk(size: 24, weight: .bold))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                if let nutrition = FoodDataService.shared.getNutritionInfo(for: selected.className) {
-                    nutritionGrid(nutrition: nutrition)
-                } else {
-                    Text("Nutrition information not available for this food")
-                        .font(.spaceGrotesk(size: 14, weight: .regular))
-                        .foregroundColor(.secondary)
-                        .padding()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                if let selected = viewModel.selectedPrediction {
+                    foodNameSection(selected)
+                    
+                    if let nutrition = FoodDataService.shared.getNutritionInfo(for: selected.className) {
+                        nutritionGrid(nutrition: nutrition)
+                    } else {
+                        Text("Nutrition information not available for this food")
+                            .font(.spaceGrotesk(size: 14, weight: .regular))
+                            .foregroundColor(.white)
+                            .padding()
+                    }
                 }
+                
+                actionButtonsSection
             }
-            
-            actionButtonsSection
+            .padding()
         }
+    }
+    
+    private func foodNameSection(_ prediction: FoodPrediction) -> some View {
+        Text(prediction.displayName)
+            .font(.spaceGrotesk(size: 24, weight: .bold))
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 16)
+            .padding(.bottom, 8)
     }
     
     private func nutritionGrid(nutrition: NutritionInfo) -> some View {
@@ -181,63 +195,72 @@ struct ProcessingResultView: View {
                     handleAddFood(selected)
                 } label: {
                     Text("Add Food")
-                        .font(.headline)
+                        .font(.spaceGrotesk(size: 16, weight: .semibold))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.black)
+                        .background(Color(hex: "45C588"))
                         .cornerRadius(12)
                 }
             }
         }
         .padding(.horizontal)
+        .padding(.top, 8)
     }
     
     private var emptyStateSection: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "exclamationmark.circle")
-                .font(.system(size: 50))
-                .foregroundColor(.orange)
-            
-            Text("No predictions found")
-                .font(.headline)
-            
-            Text("Please try again")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            
-            Button("Retry") {
-                Task {
-                    await viewModel.processImage(capturedImage)
+        ScrollView {
+            VStack(spacing: 16) {
+                Image(systemName: "exclamationmark.circle")
+                    .font(.system(size: 50))
+                    .foregroundColor(.orange)
+                
+                Text("No predictions found")
+                    .font(.spaceGrotesk(size: 18, weight: .bold))
+                    .foregroundColor(.white)
+                
+                Text("Please try again")
+                    .font(.spaceGrotesk(size: 14, weight: .regular))
+                    .foregroundColor(.white.opacity(0.7))
+                
+                Button("Retry") {
+                    Task {
+                        await viewModel.processImage(capturedImage)
+                    }
                 }
+                .buttonStyle(.bordered)
+                .tint(.white)
             }
-            .buttonStyle(.bordered)
+            .padding()
         }
-        .padding()
     }
     
     private func errorSection(_ error: CaloError) -> some View {
-        VStack(spacing: 16) {
-            Image(systemName: "exclamationmark.triangle")
-                .font(.system(size: 50))
-                .foregroundColor(.orange)
-            
-            Text("Error")
-                .font(.headline)
-            
-            Text(error.localizedDescription)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-            
-            Button("Try Again") {
-                Task {
-                    await viewModel.processImage(capturedImage)
+        ScrollView {
+            VStack(spacing: 16) {
+                Image(systemName: "exclamationmark.triangle")
+                    .font(.system(size: 50))
+                    .foregroundColor(.orange)
+                
+                Text("Error")
+                    .font(.spaceGrotesk(size: 18, weight: .bold))
+                    .foregroundColor(.white)
+                
+                Text(error.localizedDescription)
+                    .font(.spaceGrotesk(size: 14, weight: .regular))
+                    .foregroundColor(.white.opacity(0.7))
+                    .multilineTextAlignment(.center)
+                
+                Button("Try Again") {
+                    Task {
+                        await viewModel.processImage(capturedImage)
+                    }
                 }
+                .buttonStyle(.bordered)
+                .tint(.white)
             }
-            .buttonStyle(.bordered)
+            .padding()
         }
-        .padding()
     }
     
     private func handleAddFood(_ prediction: FoodPrediction) {
@@ -301,15 +324,15 @@ struct SkeletonView: View {
     
     var body: some View {
         Rectangle()
-            .fill(Color(.systemGray5))
+            .fill(Color.white.opacity(0.1))
             .overlay(
                 Rectangle()
                     .fill(
                         LinearGradient(
                             colors: [
-                                Color(.systemGray5),
-                                Color(.systemGray4),
-                                Color(.systemGray5)
+                                Color.white.opacity(0.1),
+                                Color.white.opacity(0.2),
+                                Color.white.opacity(0.1)
                             ],
                             startPoint: .leading,
                             endPoint: .trailing
