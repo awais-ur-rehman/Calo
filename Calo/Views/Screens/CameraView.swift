@@ -47,7 +47,7 @@ struct CameraView: View {
             }
             .hidden()
         }
-        .navigationTitle("Scan Food")
+        .navigationTitle("AI Camera")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(false)
         .onAppear {
@@ -102,6 +102,9 @@ struct CameraView: View {
         CameraOverlayView(
             onCapture: {
                 viewModel.capturePhoto()
+            },
+            onGalleryTap: {
+                // TODO: Implement gallery picker
             },
             isProcessing: false
         )

@@ -16,21 +16,23 @@ struct ProcessingResultView: View {
     let onRetake: () -> Void
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                imageSection
-                
-                if viewModel.isProcessing {
-                    skeletonLoadingSection
-                } else if let error = viewModel.error {
-                    errorSection(error)
-                } else if !viewModel.predictions.isEmpty {
-                    resultsSection
-                } else {
-                    emptyStateSection
+        VStack(spacing: 0) {
+            imageSection
+            
+            ScrollView {
+                VStack(spacing: 24) {
+                    if viewModel.isProcessing {
+                        skeletonLoadingSection
+                    } else if let error = viewModel.error {
+                        errorSection(error)
+                    } else if !viewModel.predictions.isEmpty {
+                        resultsSection
+                    } else {
+                        emptyStateSection
+                    }
                 }
+                .padding()
             }
-            .padding()
         }
         .navigationTitle("Results")
         .navigationBarTitleDisplayMode(.inline)
@@ -52,7 +54,6 @@ struct ProcessingResultView: View {
             .scaledToFill()
             .frame(height: 300)
             .clipped()
-            .cornerRadius(12)
     }
     
     private var skeletonLoadingSection: some View {
@@ -85,98 +86,93 @@ struct ProcessingResultView: View {
     }
     
     private var resultsSection: some View {
-        VStack(spacing: 24) {
+        VStack(alignment: .leading, spacing: 20) {
             if let selected = viewModel.selectedPrediction {
-                VStack(spacing: 16) {
-                    Text(selected.displayName)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                    Text("\(selected.confidencePercentage.rounded(toPlaces: 1))% confidence")
-                        .font(.subheadline)
+                Text(selected.displayName)
+                    .font(.spaceGrotesk(size: 24, weight: .bold))
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                if let nutrition = FoodDataService.shared.getNutritionInfo(for: selected.className) {
+                    nutritionGrid(nutrition: nutrition)
+                } else {
+                    Text("Nutrition information not available for this food")
+                        .font(.spaceGrotesk(size: 14, weight: .regular))
                         .foregroundColor(.secondary)
-                    
-                    if let nutrition = FoodDataService.shared.getNutritionInfo(for: selected.className) {
-                        nutritionInfoView(nutrition: nutrition)
-                    } else {
-                        Text("Nutrition information not available for this food")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .padding()
-                    }
+                        .padding()
                 }
-            }
-            
-            if viewModel.predictions.count > 1 {
-                otherPredictionsSection
             }
             
             actionButtonsSection
         }
     }
     
-    private func nutritionInfoView(nutrition: NutritionInfo) -> some View {
-        HStack(spacing: 30) {
-            VStack {
-                Text("\(Int(nutrition.calories(for: nutrition.servingSizeG)))")
-                    .font(.system(size: 36, weight: .bold))
-                    .foregroundColor(.orange)
-                Text("Calories")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+    private func nutritionGrid(nutrition: NutritionInfo) -> some View {
+        VStack(spacing: 12) {
+            HStack(spacing: 12) {
+                nutritionBox(
+                    title: "Calories",
+                    value: "\(Int(nutrition.calories(for: nutrition.servingSizeG)))kcal",
+                    color: "DDC0FF"
+                )
+                
+                nutritionBox(
+                    title: "Protein",
+                    value: "\(nutrition.protein(for: nutrition.servingSizeG).rounded(toPlaces: 1))g",
+                    color: "45C588"
+                )
             }
             
-            VStack {
-                Text("\(nutrition.proteinG.rounded(toPlaces: 1))g")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                Text("Protein")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            
-            VStack {
-                Text("\(nutrition.carbsG.rounded(toPlaces: 1))g")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                Text("Carbs")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            
-            VStack {
-                Text("\(nutrition.fatG.rounded(toPlaces: 1))g")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                Text("Fat")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+            HStack(spacing: 12) {
+                nutritionBox(
+                    title: "Carbs",
+                    value: "\(nutrition.carbs(for: nutrition.servingSizeG).rounded(toPlaces: 1))g",
+                    color: "F5F378"
+                )
+                
+                nutritionBox(
+                    title: "Fat",
+                    value: "\(nutrition.fat(for: nutrition.servingSizeG).rounded(toPlaces: 1))g",
+                    color: "FF6F43"
+                )
             }
         }
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(12)
     }
     
-    private var otherPredictionsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Other Predictions")
-                .font(.headline)
-                .padding(.horizontal)
+    private func nutritionBox(title: String, value: String, color: String) -> some View {
+        ZStack(alignment: .topLeading) {
+            Color(hex: color)
+                .frame(height: 120)
+                .cornerRadius(12)
             
-            ForEach(viewModel.predictions) { prediction in
-                if prediction.id != viewModel.selectedPrediction?.id {
-                    PredictionRowView(
-                        prediction: prediction,
-                        isSelected: false,
-                        onTap: {
-                            viewModel.selectPrediction(prediction)
-                        }
-                    )
+            VStack(alignment: .leading, spacing: 0) {
+                Text(title)
+                    .font(.spaceGrotesk(size: 14, weight: .medium))
+                    .foregroundColor(.black)
+                    .padding(.top, 12)
+                    .padding(.leading, 12)
+                
+                Spacer()
+                
+                if title == "Calories" {
+                    Text(value)
+                        .font(.spaceGrotesk(size: 18, weight: .bold))
+                        .foregroundColor(.black)
+                        .padding(.leading, 12)
+                        .padding(.bottom, 12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                } else {
+                    Text(value)
+                        .font(.spaceGrotesk(size: 18, weight: .bold))
+                        .foregroundColor(.black)
+                        .padding(.trailing, 12)
+                        .padding(.bottom, 12)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
         }
     }
+    
     
     private var actionButtonsSection: some View {
         VStack(spacing: 12) {
