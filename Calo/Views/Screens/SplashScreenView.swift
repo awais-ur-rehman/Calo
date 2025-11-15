@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WebKit
 
 struct SplashScreenView: View {
     @State private var isAnimating = false
@@ -66,7 +65,7 @@ struct SplashScreenView: View {
                     .frame(maxWidth: 420, maxHeight: 336)
             } else if let url = Bundle.main.url(forResource: "splashscreen", withExtension: "svg", subdirectory: nil) ??
                          Bundle.main.url(forResource: "splashscreen", withExtension: "svg", subdirectory: "Assets/Images") {
-                SVGWebView(url: url)
+                SVGWebView(url: url, maxWidth: 420, maxHeight: 336)
                     .frame(maxWidth: 420, maxHeight: 336)
             } else {
                 Rectangle()
@@ -86,53 +85,6 @@ struct SplashScreenView: View {
     }
 }
 
-struct SVGWebView: UIViewRepresentable {
-    let url: URL
-    
-    func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
-        webView.backgroundColor = .clear
-        webView.isOpaque = false
-        webView.scrollView.isScrollEnabled = false
-        webView.scrollView.contentInsetAdjustmentBehavior = .never
-        
-        if let data = try? Data(contentsOf: url),
-           let svgString = String(data: data, encoding: .utf8) {
-            let html = """
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-                <style>
-                    body {
-                        margin: 0;
-                        padding: 0;
-                        background-color: transparent;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        height: 100vh;
-                    }
-                    svg {
-                        width: 100%;
-                        height: 100%;
-                        max-width: 420px;
-                        max-height: 336px;
-                    }
-                </style>
-            </head>
-            <body>
-                \(svgString)
-            </body>
-            </html>
-            """
-            webView.loadHTMLString(html, baseURL: url.deletingLastPathComponent())
-        }
-        return webView
-    }
-    
-    func updateUIView(_ webView: WKWebView, context: Context) {}
-}
 
 #Preview {
     SplashScreenView()

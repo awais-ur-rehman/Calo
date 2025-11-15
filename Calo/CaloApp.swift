@@ -12,6 +12,7 @@ struct CaloApp: App {
     @StateObject private var foodDataService = FoodDataService.shared
     @StateObject private var classifierService = FoodClassifierService.shared
     @State private var showSplash = true
+    @State private var showOnboarding = false
     
     init() {
         Task {
@@ -28,9 +29,19 @@ struct CaloApp: App {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                             withAnimation {
                                 showSplash = false
+                                if !OnboardingManager.shared.hasCompletedOnboarding {
+                                    showOnboarding = true
+                                }
                             }
                         }
                     }
+            } else if showOnboarding {
+                OnboardingView(onComplete: {
+                    OnboardingManager.shared.completeOnboarding()
+                    withAnimation {
+                        showOnboarding = false
+                    }
+                })
             } else {
                 HomeView()
             }
