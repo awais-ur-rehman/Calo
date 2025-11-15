@@ -11,6 +11,7 @@ import SwiftUI
 struct CaloApp: App {
     @StateObject private var foodDataService = FoodDataService.shared
     @StateObject private var classifierService = FoodClassifierService.shared
+    @State private var showSplash = true
     
     init() {
         Task {
@@ -21,7 +22,18 @@ struct CaloApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            if showSplash {
+                SplashScreenView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                            withAnimation {
+                                showSplash = false
+                            }
+                        }
+                    }
+            } else {
+                HomeView()
+            }
         }
     }
 }
