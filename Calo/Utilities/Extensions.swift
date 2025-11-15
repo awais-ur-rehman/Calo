@@ -57,3 +57,32 @@ extension Color {
     }
 }
 
+extension Font {
+    static func spaceGrotesk(size: CGFloat, weight: SpaceGroteskWeight = .regular) -> Font {
+        return Font.custom(weight.fontName, size: size)
+    }
+}
+
+enum SpaceGroteskWeight {
+    case light
+    case regular
+    case medium
+    case semibold
+    case bold
+    
+    var fontName: String {
+        switch self {
+        case .light:
+            return "SpaceGrotesk-Light"
+        case .regular:
+            return "SpaceGrotesk-Regular"
+        case .medium:
+            return "SpaceGrotesk-Medium"
+        case .semibold:
+            return "SpaceGrotesk-SemiBold"
+        case .bold:
+            return "SpaceGrotesk-Bold"
+        }
+    }
+}
+

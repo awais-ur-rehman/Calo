@@ -21,7 +21,7 @@ struct SplashScreenView: View {
                 
                 VStack(spacing: 24) {
                     Text("Calo")
-                        .font(.system(size: 64, weight: .bold))
+                        .font(.spaceGrotesk(size: 64, weight: .bold))
                         .foregroundColor(.white)
                     
                     taglineView
@@ -38,11 +38,11 @@ struct SplashScreenView: View {
         VStack(spacing: 12) {
             HStack(spacing: 8) {
                 Text("Eating")
-                    .font(.system(size: 24, weight: .regular))
+                    .font(.spaceGrotesk(size: 24, weight: .regular))
                     .foregroundColor(.white)
                 
                 Text("Healthy")
-                    .font(.system(size: 24, weight: .semibold))
+                    .font(.spaceGrotesk(size: 24, weight: .semibold))
                     .foregroundColor(.white)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
@@ -51,7 +51,7 @@ struct SplashScreenView: View {
             }
             
             Text("made easy!")
-                .font(.system(size: 24, weight: .regular))
+                .font(.spaceGrotesk(size: 24, weight: .regular))
                 .foregroundColor(.white)
         }
         .frame(maxWidth: .infinity)
