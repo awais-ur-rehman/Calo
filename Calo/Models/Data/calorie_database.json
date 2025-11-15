@@ -1,0 +1,709 @@
+{
+  "apple_pie": {
+    "calories_per_100g": 237,
+    "protein_g": 2,
+    "carbs_g": 34,
+    "fat_g": 11,
+    "serving_size_g": 125
+  },
+  "baby_back_ribs": {
+    "calories_per_100g": 361,
+    "protein_g": 21,
+    "carbs_g": 3,
+    "fat_g": 30,
+    "serving_size_g": 150
+  },
+  "baklava": {
+    "calories_per_100g": 428,
+    "protein_g": 5,
+    "carbs_g": 52,
+    "fat_g": 23,
+    "serving_size_g": 75
+  },
+  "beef_carpaccio": {
+    "calories_per_100g": 175,
+    "protein_g": 24,
+    "carbs_g": 1,
+    "fat_g": 8,
+    "serving_size_g": 100
+  },
+  "beef_tartare": {
+    "calories_per_100g": 220,
+    "protein_g": 20,
+    "carbs_g": 3,
+    "fat_g": 14,
+    "serving_size_g": 120
+  },
+  "beet_salad": {
+    "calories_per_100g": 90,
+    "protein_g": 2,
+    "carbs_g": 16,
+    "fat_g": 3,
+    "serving_size_g": 150
+  },
+  "beignets": {
+    "calories_per_100g": 396,
+    "protein_g": 6,
+    "carbs_g": 48,
+    "fat_g": 20,
+    "serving_size_g": 60
+  },
+  "bibimbap": {
+    "calories_per_100g": 145,
+    "protein_g": 8,
+    "carbs_g": 20,
+    "fat_g": 4,
+    "serving_size_g": 300
+  },
+  "bread_pudding": {
+    "calories_per_100g": 267,
+    "protein_g": 6,
+    "carbs_g": 37,
+    "fat_g": 11,
+    "serving_size_g": 150
+  },
+  "breakfast_burrito": {
+    "calories_per_100g": 181,
+    "protein_g": 9,
+    "carbs_g": 18,
+    "fat_g": 8,
+    "serving_size_g": 200
+  },
+  "bruschetta": {
+    "calories_per_100g": 195,
+    "protein_g": 5,
+    "carbs_g": 24,
+    "fat_g": 9,
+    "serving_size_g": 80
+  },
+  "caesar_salad": {
+    "calories_per_100g": 190,
+    "protein_g": 7,
+    "carbs_g": 8,
+    "fat_g": 15,
+    "serving_size_g": 200
+  },
+  "cannoli": {
+    "calories_per_100g": 350,
+    "protein_g": 7,
+    "carbs_g": 42,
+    "fat_g": 17,
+    "serving_size_g": 90
+  },
+  "caprese_salad": {
+    "calories_per_100g": 155,
+    "protein_g": 9,
+    "carbs_g": 4,
+    "fat_g": 12,
+    "serving_size_g": 150
+  },
+  "carrot_cake": {
+    "calories_per_100g": 371,
+    "protein_g": 4,
+    "carbs_g": 48,
+    "fat_g": 19,
+    "serving_size_g": 100
+  },
+  "ceviche": {
+    "calories_per_100g": 110,
+    "protein_g": 15,
+    "carbs_g": 8,
+    "fat_g": 2,
+    "serving_size_g": 150
+  },
+  "cheesecake": {
+    "calories_per_100g": 321,
+    "protein_g": 6,
+    "carbs_g": 26,
+    "fat_g": 23,
+    "serving_size_g": 125
+  },
+  "cheese_plate": {
+    "calories_per_100g": 353,
+    "protein_g": 23,
+    "carbs_g": 3,
+    "fat_g": 28,
+    "serving_size_g": 100
+  },
+  "chicken_curry": {
+    "calories_per_100g": 137,
+    "protein_g": 12,
+    "carbs_g": 9,
+    "fat_g": 6,
+    "serving_size_g": 250
+  },
+  "chicken_quesadilla": {
+    "calories_per_100g": 238,
+    "protein_g": 14,
+    "carbs_g": 20,
+    "fat_g": 11,
+    "serving_size_g": 150
+  },
+  "chicken_wings": {
+    "calories_per_100g": 290,
+    "protein_g": 24,
+    "carbs_g": 0,
+    "fat_g": 21,
+    "serving_size_g": 120
+  },
+  "chocolate_cake": {
+    "calories_per_100g": 371,
+    "protein_g": 5,
+    "carbs_g": 50,
+    "fat_g": 18,
+    "serving_size_g": 100
+  },
+  "chocolate_mousse": {
+    "calories_per_100g": 258,
+    "protein_g": 4,
+    "carbs_g": 23,
+    "fat_g": 17,
+    "serving_size_g": 120
+  },
+  "churros": {
+    "calories_per_100g": 404,
+    "protein_g": 5,
+    "carbs_g": 51,
+    "fat_g": 20,
+    "serving_size_g": 80
+  },
+  "clam_chowder": {
+    "calories_per_100g": 97,
+    "protein_g": 5,
+    "carbs_g": 11,
+    "fat_g": 3,
+    "serving_size_g": 250
+  },
+  "club_sandwich": {
+    "calories_per_100g": 240,
+    "protein_g": 14,
+    "carbs_g": 25,
+    "fat_g": 9,
+    "serving_size_g": 200
+  },
+  "crab_cakes": {
+    "calories_per_100g": 223,
+    "protein_g": 12,
+    "carbs_g": 15,
+    "fat_g": 12,
+    "serving_size_g": 100
+  },
+  "creme_brulee": {
+    "calories_per_100g": 296,
+    "protein_g": 5,
+    "carbs_g": 26,
+    "fat_g": 19,
+    "serving_size_g": 120
+  },
+  "croque_madame": {
+    "calories_per_100g": 287,
+    "protein_g": 14,
+    "carbs_g": 20,
+    "fat_g": 16,
+    "serving_size_g": 180
+  },
+  "cup_cakes": {
+    "calories_per_100g": 305,
+    "protein_g": 3,
+    "carbs_g": 47,
+    "fat_g": 12,
+    "serving_size_g": 70
+  },
+  "deviled_eggs": {
+    "calories_per_100g": 218,
+    "protein_g": 12,
+    "carbs_g": 2,
+    "fat_g": 18,
+    "serving_size_g": 60
+  },
+  "donuts": {
+    "calories_per_100g": 452,
+    "protein_g": 5,
+    "carbs_g": 51,
+    "fat_g": 25,
+    "serving_size_g": 60
+  },
+  "dumplings": {
+    "calories_per_100g": 206,
+    "protein_g": 8,
+    "carbs_g": 28,
+    "fat_g": 6,
+    "serving_size_g": 100
+  },
+  "edamame": {
+    "calories_per_100g": 122,
+    "protein_g": 11,
+    "carbs_g": 9,
+    "fat_g": 5,
+    "serving_size_g": 150
+  },
+  "eggs_benedict": {
+    "calories_per_100g": 261,
+    "protein_g": 12,
+    "carbs_g": 13,
+    "fat_g": 18,
+    "serving_size_g": 180
+  },
+  "escargots": {
+    "calories_per_100g": 90,
+    "protein_g": 16,
+    "carbs_g": 2,
+    "fat_g": 1,
+    "serving_size_g": 100
+  },
+  "falafel": {
+    "calories_per_100g": 333,
+    "protein_g": 13,
+    "carbs_g": 32,
+    "fat_g": 18,
+    "serving_size_g": 120
+  },
+  "filet_mignon": {
+    "calories_per_100g": 227,
+    "protein_g": 26,
+    "carbs_g": 0,
+    "fat_g": 13,
+    "serving_size_g": 200
+  },
+  "fish_and_chips": {
+    "calories_per_100g": 265,
+    "protein_g": 12,
+    "carbs_g": 22,
+    "fat_g": 14,
+    "serving_size_g": 250
+  },
+  "foie_gras": {
+    "calories_per_100g": 462,
+    "protein_g": 11,
+    "carbs_g": 4,
+    "fat_g": 44,
+    "serving_size_g": 50
+  },
+  "french_fries": {
+    "calories_per_100g": 312,
+    "protein_g": 4,
+    "carbs_g": 41,
+    "fat_g": 15,
+    "serving_size_g": 150
+  },
+  "french_onion_soup": {
+    "calories_per_100g": 55,
+    "protein_g": 3,
+    "carbs_g": 7,
+    "fat_g": 2,
+    "serving_size_g": 300
+  },
+  "french_toast": {
+    "calories_per_100g": 226,
+    "protein_g": 8,
+    "carbs_g": 30,
+    "fat_g": 8,
+    "serving_size_g": 150
+  },
+  "fried_calamari": {
+    "calories_per_100g": 167,
+    "protein_g": 15,
+    "carbs_g": 7,
+    "fat_g": 8,
+    "serving_size_g": 150
+  },
+  "fried_rice": {
+    "calories_per_100g": 163,
+    "protein_g": 4,
+    "carbs_g": 26,
+    "fat_g": 5,
+    "serving_size_g": 200
+  },
+  "frozen_yogurt": {
+    "calories_per_100g": 127,
+    "protein_g": 4,
+    "carbs_g": 24,
+    "fat_g": 2,
+    "serving_size_g": 150
+  },
+  "garlic_bread": {
+    "calories_per_100g": 350,
+    "protein_g": 8,
+    "carbs_g": 43,
+    "fat_g": 15,
+    "serving_size_g": 80
+  },
+  "gnocchi": {
+    "calories_per_100g": 133,
+    "protein_g": 3,
+    "carbs_g": 27,
+    "fat_g": 1,
+    "serving_size_g": 200
+  },
+  "greek_salad": {
+    "calories_per_100g": 106,
+    "protein_g": 3,
+    "carbs_g": 8,
+    "fat_g": 7,
+    "serving_size_g": 200
+  },
+  "grilled_cheese_sandwich": {
+    "calories_per_100g": 289,
+    "protein_g": 12,
+    "carbs_g": 28,
+    "fat_g": 14,
+    "serving_size_g": 150
+  },
+  "grilled_salmon": {
+    "calories_per_100g": 206,
+    "protein_g": 22,
+    "carbs_g": 0,
+    "fat_g": 13,
+    "serving_size_g": 150
+  },
+  "guacamole": {
+    "calories_per_100g": 160,
+    "protein_g": 2,
+    "carbs_g": 9,
+    "fat_g": 15,
+    "serving_size_g": 100
+  },
+  "gyoza": {
+    "calories_per_100g": 211,
+    "protein_g": 9,
+    "carbs_g": 26,
+    "fat_g": 7,
+    "serving_size_g": 100
+  },
+  "hamburger": {
+    "calories_per_100g": 295,
+    "protein_g": 17,
+    "carbs_g": 24,
+    "fat_g": 14,
+    "serving_size_g": 200
+  },
+  "hot_and_sour_soup": {
+    "calories_per_100g": 45,
+    "protein_g": 3,
+    "carbs_g": 5,
+    "fat_g": 2,
+    "serving_size_g": 300
+  },
+  "hot_dog": {
+    "calories_per_100g": 290,
+    "protein_g": 10,
+    "carbs_g": 22,
+    "fat_g": 18,
+    "serving_size_g": 150
+  },
+  "huevos_rancheros": {
+    "calories_per_100g": 150,
+    "protein_g": 9,
+    "carbs_g": 14,
+    "fat_g": 7,
+    "serving_size_g": 250
+  },
+  "hummus": {
+    "calories_per_100g": 166,
+    "protein_g": 8,
+    "carbs_g": 14,
+    "fat_g": 10,
+    "serving_size_g": 100
+  },
+  "ice_cream": {
+    "calories_per_100g": 207,
+    "protein_g": 4,
+    "carbs_g": 24,
+    "fat_g": 11,
+    "serving_size_g": 130
+  },
+  "lasagna": {
+    "calories_per_100g": 135,
+    "protein_g": 8,
+    "carbs_g": 14,
+    "fat_g": 5,
+    "serving_size_g": 250
+  },
+  "lobster_bisque": {
+    "calories_per_100g": 90,
+    "protein_g": 4,
+    "carbs_g": 7,
+    "fat_g": 5,
+    "serving_size_g": 250
+  },
+  "lobster_roll_sandwich": {
+    "calories_per_100g": 222,
+    "protein_g": 12,
+    "carbs_g": 20,
+    "fat_g": 10,
+    "serving_size_g": 180
+  },
+  "macaroni_and_cheese": {
+    "calories_per_100g": 164,
+    "protein_g": 7,
+    "carbs_g": 18,
+    "fat_g": 7,
+    "serving_size_g": 200
+  },
+  "macarons": {
+    "calories_per_100g": 390,
+    "protein_g": 5,
+    "carbs_g": 55,
+    "fat_g": 17,
+    "serving_size_g": 30
+  },
+  "miso_soup": {
+    "calories_per_100g": 40,
+    "protein_g": 3,
+    "carbs_g": 5,
+    "fat_g": 1,
+    "serving_size_g": 250
+  },
+  "mussels": {
+    "calories_per_100g": 86,
+    "protein_g": 12,
+    "carbs_g": 4,
+    "fat_g": 2,
+    "serving_size_g": 150
+  },
+  "nachos": {
+    "calories_per_100g": 346,
+    "protein_g": 9,
+    "carbs_g": 36,
+    "fat_g": 19,
+    "serving_size_g": 150
+  },
+  "omelette": {
+    "calories_per_100g": 154,
+    "protein_g": 11,
+    "carbs_g": 1,
+    "fat_g": 12,
+    "serving_size_g": 150
+  },
+  "onion_rings": {
+    "calories_per_100g": 407,
+    "protein_g": 5,
+    "carbs_g": 38,
+    "fat_g": 26,
+    "serving_size_g": 100
+  },
+  "oysters": {
+    "calories_per_100g": 68,
+    "protein_g": 7,
+    "carbs_g": 4,
+    "fat_g": 2,
+    "serving_size_g": 100
+  },
+  "pad_thai": {
+    "calories_per_100g": 154,
+    "protein_g": 6,
+    "carbs_g": 23,
+    "fat_g": 4,
+    "serving_size_g": 250
+  },
+  "paella": {
+    "calories_per_100g": 139,
+    "protein_g": 8,
+    "carbs_g": 18,
+    "fat_g": 4,
+    "serving_size_g": 300
+  },
+  "pancakes": {
+    "calories_per_100g": 227,
+    "protein_g": 6,
+    "carbs_g": 28,
+    "fat_g": 10,
+    "serving_size_g": 150
+  },
+  "panna_cotta": {
+    "calories_per_100g": 235,
+    "protein_g": 3,
+    "carbs_g": 22,
+    "fat_g": 15,
+    "serving_size_g": 120
+  },
+  "peking_duck": {
+    "calories_per_100g": 337,
+    "protein_g": 19,
+    "carbs_g": 0,
+    "fat_g": 28,
+    "serving_size_g": 150
+  },
+  "pho": {
+    "calories_per_100g": 92,
+    "protein_g": 7,
+    "carbs_g": 12,
+    "fat_g": 2,
+    "serving_size_g": 400
+  },
+  "pizza": {
+    "calories_per_100g": 266,
+    "protein_g": 11,
+    "carbs_g": 33,
+    "fat_g": 10,
+    "serving_size_g": 150
+  },
+  "pork_chop": {
+    "calories_per_100g": 231,
+    "protein_g": 25,
+    "carbs_g": 0,
+    "fat_g": 14,
+    "serving_size_g": 180
+  },
+  "poutine": {
+    "calories_per_100g": 510,
+    "protein_g": 13,
+    "carbs_g": 45,
+    "fat_g": 31,
+    "serving_size_g": 250
+  },
+  "prime_rib": {
+    "calories_per_100g": 291,
+    "protein_g": 24,
+    "carbs_g": 0,
+    "fat_g": 21,
+    "serving_size_g": 200
+  },
+  "pulled_pork_sandwich": {
+    "calories_per_100g": 237,
+    "protein_g": 18,
+    "carbs_g": 19,
+    "fat_g": 9,
+    "serving_size_g": 200
+  },
+  "ramen": {
+    "calories_per_100g": 436,
+    "protein_g": 10,
+    "carbs_g": 62,
+    "fat_g": 16,
+    "serving_size_g": 350
+  },
+  "ravioli": {
+    "calories_per_100g": 175,
+    "protein_g": 7,
+    "carbs_g": 26,
+    "fat_g": 5,
+    "serving_size_g": 200
+  },
+  "red_velvet_cake": {
+    "calories_per_100g": 379,
+    "protein_g": 4,
+    "carbs_g": 52,
+    "fat_g": 18,
+    "serving_size_g": 100
+  },
+  "risotto": {
+    "calories_per_100g": 143,
+    "protein_g": 3,
+    "carbs_g": 21,
+    "fat_g": 5,
+    "serving_size_g": 250
+  },
+  "samosa": {
+    "calories_per_100g": 262,
+    "protein_g": 5,
+    "carbs_g": 27,
+    "fat_g": 15,
+    "serving_size_g": 80
+  },
+  "sashimi": {
+    "calories_per_100g": 127,
+    "protein_g": 20,
+    "carbs_g": 0,
+    "fat_g": 4,
+    "serving_size_g": 100
+  },
+  "scallops": {
+    "calories_per_100g": 111,
+    "protein_g": 20,
+    "carbs_g": 5,
+    "fat_g": 1,
+    "serving_size_g": 120
+  },
+  "seaweed_salad": {
+    "calories_per_100g": 70,
+    "protein_g": 1,
+    "carbs_g": 14,
+    "fat_g": 1,
+    "serving_size_g": 100
+  },
+  "shrimp_and_grits": {
+    "calories_per_100g": 145,
+    "protein_g": 9,
+    "carbs_g": 18,
+    "fat_g": 4,
+    "serving_size_g": 250
+  },
+  "spaghetti_bolognese": {
+    "calories_per_100g": 151,
+    "protein_g": 8,
+    "carbs_g": 19,
+    "fat_g": 5,
+    "serving_size_g": 300
+  },
+  "spaghetti_carbonara": {
+    "calories_per_100g": 196,
+    "protein_g": 9,
+    "carbs_g": 23,
+    "fat_g": 8,
+    "serving_size_g": 300
+  },
+  "spring_rolls": {
+    "calories_per_100g": 154,
+    "protein_g": 4,
+    "carbs_g": 21,
+    "fat_g": 6,
+    "serving_size_g": 100
+  },
+  "steak": {
+    "calories_per_100g": 271,
+    "protein_g": 25,
+    "carbs_g": 0,
+    "fat_g": 19,
+    "serving_size_g": 200
+  },
+  "strawberry_shortcake": {
+    "calories_per_100g": 294,
+    "protein_g": 4,
+    "carbs_g": 42,
+    "fat_g": 13,
+    "serving_size_g": 120
+  },
+  "sushi": {
+    "calories_per_100g": 143,
+    "protein_g": 6,
+    "carbs_g": 21,
+    "fat_g": 4,
+    "serving_size_g": 150
+  },
+  "tacos": {
+    "calories_per_100g": 226,
+    "protein_g": 10,
+    "carbs_g": 20,
+    "fat_g": 12,
+    "serving_size_g": 150
+  },
+  "takoyaki": {
+    "calories_per_100g": 193,
+    "protein_g": 7,
+    "carbs_g": 21,
+    "fat_g": 9,
+    "serving_size_g": 120
+  },
+  "tiramisu": {
+    "calories_per_100g": 240,
+    "protein_g": 5,
+    "carbs_g": 28,
+    "fat_g": 12,
+    "serving_size_g": 120
+  },
+  "tuna_tartare": {
+    "calories_per_100g": 144,
+    "protein_g": 23,
+    "carbs_g": 2,
+    "fat_g": 5,
+    "serving_size_g": 120
+  },
+  "waffles": {
+    "calories_per_100g": 291,
+    "protein_g": 6,
+    "carbs_g": 37,
+    "fat_g": 13,
+    "serving_size_g": 150
+  }
+}
