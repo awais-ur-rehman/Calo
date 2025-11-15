@@ -35,40 +35,46 @@ struct SplashScreenView: View {
     }
     
     private var taglineView: some View {
-        HStack(spacing: 8) {
-            Text("eat")
+        VStack(spacing: 12) {
+            Text("Eating")
                 .font(.system(size: 24, weight: .regular))
                 .foregroundColor(.white)
             
-            Text("healthy")
-                .font(.system(size: 24, weight: .semibold))
-                .foregroundColor(.white)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
-                .background(Color(hex: "45C588"))
-                .cornerRadius(20)
-            
-            Text("made easy")
-                .font(.system(size: 24, weight: .regular))
-                .foregroundColor(.white)
+            HStack(spacing: 8) {
+                Text("Healthy")
+                    .font(.system(size: 24, weight: .semibold))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .background(Color(hex: "45C588"))
+                    .cornerRadius(20)
+                
+                Text("made easy!")
+                    .font(.system(size: 24, weight: .regular))
+                    .foregroundColor(.white)
+            }
         }
+        .multilineTextAlignment(.center)
     }
     
     private var splashIconsView: some View {
         Group {
-            if let image = UIImage(named: "splash-icons") {
+            if let image = UIImage(named: "splashscreen") {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 420, maxHeight: 336)
-            } else if let url = Bundle.main.url(forResource: "splash-icons", withExtension: "svg", subdirectory: "Assets/Images") ?? 
-                         Bundle.main.url(forResource: "splash-icons", withExtension: "svg", subdirectory: nil) {
+            } else if let url = Bundle.main.url(forResource: "splashscreen", withExtension: "svg", subdirectory: nil) ??
+                         Bundle.main.url(forResource: "splashscreen", withExtension: "svg", subdirectory: "Assets/Images") {
                 SVGWebView(url: url)
                     .frame(maxWidth: 420, maxHeight: 336)
             } else {
                 Rectangle()
                     .fill(Color.clear)
                     .frame(height: 336)
+                    .onAppear {
+                        print("⚠️ [SplashScreen] SVG file not found. Make sure splashscreen.svg is added to the target in Build Phases.")
+                    }
             }
         }
         .opacity(isAnimating ? 1 : 0)
