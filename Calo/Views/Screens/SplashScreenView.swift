@@ -36,11 +36,11 @@ struct SplashScreenView: View {
     
     private var taglineView: some View {
         VStack(spacing: 12) {
-            Text("Eating")
-                .font(.system(size: 24, weight: .regular))
-                .foregroundColor(.white)
-            
             HStack(spacing: 8) {
+                Text("Eating")
+                    .font(.system(size: 24, weight: .regular))
+                    .foregroundColor(.white)
+                
                 Text("Healthy")
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundColor(.white)
@@ -48,13 +48,13 @@ struct SplashScreenView: View {
                     .padding(.vertical, 8)
                     .background(Color(hex: "45C588"))
                     .cornerRadius(20)
-                
-                Text("made easy!")
-                    .font(.system(size: 24, weight: .regular))
-                    .foregroundColor(.white)
             }
+            
+            Text("made easy!")
+                .font(.system(size: 24, weight: .regular))
+                .foregroundColor(.white)
         }
-        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity)
     }
     
     private var splashIconsView: some View {
