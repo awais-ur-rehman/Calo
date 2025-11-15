@@ -20,7 +20,7 @@ struct SplashScreenView: View {
                 
                 VStack(spacing: 24) {
                     Text("Calo")
-                        .font(.spaceGrotesk(size: 64, weight: .bold))
+                        .font(.spaceGrotesk(size: 64, weight: .semibold))
                         .foregroundColor(.white)
                     
                     taglineView

@@ -12,7 +12,6 @@ struct OnboardingScreen: View {
     let svgFileName: String
     let title: String
     let description: String
-    let buttonText: String
     let onNext: () -> Void
     
     init(
@@ -20,14 +19,12 @@ struct OnboardingScreen: View {
         svgFileName: String,
         title: String,
         description: String,
-        buttonText: String = "Next",
         onNext: @escaping () -> Void
     ) {
         self.backgroundColor = backgroundColor
         self.svgFileName = svgFileName
         self.title = title
         self.description = description
-        self.buttonText = buttonText
         self.onNext = onNext
     }
     
@@ -38,18 +35,16 @@ struct OnboardingScreen: View {
             
             VStack(spacing: 0) {
                 Spacer()
+                    .frame(height: 100)
                 
                 illustrationView
-                    .frame(maxHeight: .infinity)
-                    .padding(.top, 60)
+                    .frame(height: 350)
                 
                 Spacer()
                 
                 textContent
                     .padding(.horizontal, 32)
-                    .padding(.bottom, 40)
-                
-                Spacer()
+                    .padding(.bottom, 60)
                 
                 buttonView
             }
@@ -66,7 +61,7 @@ struct OnboardingScreen: View {
             } else {
                 Rectangle()
                     .fill(Color.clear)
-                    .frame(height: 300)
+                    .frame(height: 350)
                     .onAppear {
                         print("⚠️ [OnboardingScreen] SVG file not found: \(svgFileName).svg")
                     }
@@ -77,25 +72,24 @@ struct OnboardingScreen: View {
     private var textContent: some View {
         VStack(spacing: 16) {
             Text(title)
-                .font(.spaceGrotesk(size: 28, weight: .bold))
+                .font(.spaceGrotesk(size: 26, weight: .bold))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .lineSpacing(4)
+                .fixedSize(horizontal: false, vertical: true)
             
             Text(description)
                 .font(.spaceGrotesk(size: 16, weight: .regular))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .lineSpacing(4)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
     
     private var buttonView: some View {
-        VStack {
-            Spacer()
-            OnboardingButton(text: buttonText, action: onNext)
-                .padding(.bottom, 20)
-        }
+        OnboardingButton(action: onNext)
+            .padding(.bottom, 40)
     }
 }
 

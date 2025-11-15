@@ -28,8 +28,7 @@ struct OnboardingView: View {
             backgroundColor: "FF6F43",
             svgFileName: "lemon",
             title: "Your Health Journey Starts Here",
-            description: "We help you choose healthier foods and enjoy tasty, nutritious meals for your well-being.",
-            buttonText: "Get Started"
+            description: "We help you choose healthier foods and enjoy tasty, nutritious meals for your well-being."
         )
     ]
     
@@ -41,7 +40,6 @@ struct OnboardingView: View {
                     svgFileName: screens[index].svgFileName,
                     title: screens[index].title,
                     description: screens[index].description,
-                    buttonText: screens[index].buttonText,
                     onNext: {
                         if index < screens.count - 1 {
                             withAnimation {
@@ -65,20 +63,17 @@ struct OnboardingScreenData {
     let svgFileName: String
     let title: String
     let description: String
-    let buttonText: String
     
     init(
         backgroundColor: String,
         svgFileName: String,
         title: String,
-        description: String,
-        buttonText: String = "Next"
+        description: String
     ) {
         self.backgroundColor = backgroundColor
         self.svgFileName = svgFileName
         self.title = title
         self.description = description
-        self.buttonText = buttonText
     }
 }
 
